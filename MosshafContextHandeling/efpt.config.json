@@ -1,0 +1,290 @@
+﻿{
+   "CodeGenerationMode": 4,
+   "ContextClassName": "Quran_quran3Context",
+   "ContextNamespace": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "MinimumProductVersion": "2.6.1186",
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "MosshafContextHandeling",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[quran_quran2].[3egab]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[3othaymen2]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[a7kam]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[admins]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[ahkam]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[ahkam_book]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[ahkam2]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[asbab]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[asbab_book]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[bab]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[chapter]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[e3gaz]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[e3gaz_bab]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[e3gaz_book]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[e3gaz_chapters]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[e3gaz_sub_bab]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[e3rab]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[e3rab_book]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[karat_list]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[karat_quran]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[karat_quran_org]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[kerat]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[kerat3ashr]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[ma3any]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[ma3any_book]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[mofrad_letters]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[mofrad_words]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[mofradat]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[mogam]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[mogam_book]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[mogam_words]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[moshabeh]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[moshabeh1]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[multimedia]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[multimedia_categories]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[multimedia_lecturer]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[olom]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[olom_bab]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[olom_book]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[olom_chapters]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[olom_sub_bab]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[quran]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[quran_sound]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[quran3]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[reciters]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[sura]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[sura_sound]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[sverse]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[t_lang]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[tafseeer]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[tafseer]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[tafseer_book]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[tafseer_english]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[tafseer_naboy]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[tafseer_pages]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[tagwed]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[tagwed_book]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[tragem]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[tragem_book]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[warsh]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[quran_quran2].[words]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": null,
+   "UncountableWords": null,
+   "UseAsyncStoredProcedureCalls": true,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDatabaseNamesForRoutines": true,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseInternalAccessModifiersForSprocsAndFunctions": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UsePrefixNavigationNaming": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false,
+   "UseT4Split": false
+}

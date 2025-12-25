@@ -1,0 +1,6 @@
+@MosshafContextHandeling_HostAddress = http://localhost:5264
+
+GET {{MosshafContextHandeling_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
