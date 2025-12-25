@@ -55,11 +55,16 @@ public partial class Quran_quran4Context : DbContext
     public virtual DbSet<MogamBab> MogamBabs { get; set; }
     public virtual DbSet<Mogam> Mogams { get; set; }
     public virtual DbSet<Radio> Radios { get; set; }
+    /// <summary>
+    /// ////////new models
+    /// </summary>
+    public virtual DbSet<Tafser> Tafsers { get; set; }
+    public virtual DbSet<Ahhkam> Ahhkams { get; set; }
 
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=URANUS\\DEV;Database=Quran_quran5Ziad;User Id=ils;Password=ils@123;MultipleActiveResultSets=true;TrustServerCertificate=true;");
+        => optionsBuilder.UseSqlServer("Server=URANUS\\DEV;Database=MoshafShariefDb;User Id=ils;Password=ils@123;MultipleActiveResultSets=true;TrustServerCertificate=true;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

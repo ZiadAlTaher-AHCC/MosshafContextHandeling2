@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MosshafContextHandeling.MainModels.NewModels;
 
@@ -11,9 +12,11 @@ using MosshafContextHandeling.MainModels.NewModels;
 namespace MosshafContextHandeling.MainModels.Migrations
 {
     [DbContext(typeof(Quran_quran4Context))]
-    partial class Quran_quran4ContextModelSnapshot : ModelSnapshot
+    [Migration("20251225123719_addNewTafseerTableWithNewStructure")]
+    partial class addNewTafseerTableWithNewStructure
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,33 +24,6 @@ namespace MosshafContextHandeling.MainModels.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Ahhkam", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("AhkamBookId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("AyaId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Text")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AhkamBookId");
-
-                    b.HasIndex("AyaId");
-
-                    b.ToTable("Ahhkams");
-                });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Ahkam", b =>
                 {
@@ -1257,21 +1233,6 @@ namespace MosshafContextHandeling.MainModels.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TragemBooks");
-                });
-
-            modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Ahhkam", b =>
-                {
-                    b.HasOne("MosshafContextHandeling.MainModels.NewModels.AhkamBook", "AhkamBook")
-                        .WithMany()
-                        .HasForeignKey("AhkamBookId");
-
-                    b.HasOne("MosshafContextHandeling.MainModels.NewModels.Aya", "Aya")
-                        .WithMany()
-                        .HasForeignKey("AyaId");
-
-                    b.Navigation("AhkamBook");
-
-                    b.Navigation("Aya");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Ahkam", b =>
