@@ -31,8 +31,6 @@ public partial class Quran_quran4Context : DbContext
     public virtual DbSet<AhkamBook> AhkamBooks { get; set; }
     //public virtual DbSet<AsbabNozool> AsbabNozools { get; set; }
     public virtual DbSet<AsbabNozoolBook> AsbabNozoolBooks { get; set; }
-    public virtual DbSet<Erab> Erabs { get; set; }
-    public virtual DbSet<ErabBook> ErabBooks { get; set; }
     public virtual DbSet<Keraat> Keraats { get; set; }
     public virtual DbSet<Reciter> Reciters { get; set; }
     public virtual DbSet<Moshabeh> Moshabehs { get; set; }
@@ -55,6 +53,9 @@ public partial class Quran_quran4Context : DbContext
     public virtual DbSet<MogamBab> MogamBabs { get; set; }
     public virtual DbSet<Mogam> Mogams { get; set; }
     public virtual DbSet<Radio> Radios { get; set; }
+
+    //public virtual DbSet<Erab> Erabs { get; set; }
+    public virtual DbSet<ErabBook> ErabBooks { get; set; }
     /// <summary>
     /// ////////new models
     /// </summary>
@@ -62,6 +63,7 @@ public partial class Quran_quran4Context : DbContext
     public virtual DbSet<Ahkam> Ahkams { get; set; }
     public virtual DbSet<AsbabNozool> AsbabNozools { get; set; }
     public virtual DbSet<Tragem> Tragems { get; set; }
+    public virtual DbSet<Erab> Erabs { get; set; }
 
 
 

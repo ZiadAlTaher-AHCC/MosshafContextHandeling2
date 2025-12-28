@@ -17,5 +17,5 @@ public  class ErabBook//reviewed
 
     [OldName("book")]
     [Required]
-    public string Book { get; set; }
+    public string Name { get; set; }
 }

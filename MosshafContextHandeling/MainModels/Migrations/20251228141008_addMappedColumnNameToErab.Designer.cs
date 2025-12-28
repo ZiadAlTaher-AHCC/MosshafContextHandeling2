@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MosshafContextHandeling.MainModels.NewModels;
 
@@ -11,9 +12,11 @@ using MosshafContextHandeling.MainModels.NewModels;
 namespace MosshafContextHandeling.MainModels.Migrations
 {
     [DbContext(typeof(Quran_quran4Context))]
-    partial class Quran_quran4ContextModelSnapshot : ModelSnapshot
+    [Migration("20251228141008_addMappedColumnNameToErab")]
+    partial class addMappedColumnNameToErab
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,7 +49,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasIndex("AyaId");
 
-                    b.ToTable("Ahkams", (string)null);
+                    b.ToTable("Ahkams");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.AhkamBook", b =>
@@ -63,7 +66,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AhkamBooks", (string)null);
+                    b.ToTable("AhkamBooks");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.AsbabNozool", b =>
@@ -90,7 +93,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasIndex("AyaId");
 
-                    b.ToTable("AsbabNozools", (string)null);
+                    b.ToTable("AsbabNozools");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.AsbabNozoolBook", b =>
@@ -101,13 +104,13 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Book")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("AsbabNozoolBooks", (string)null);
+                    b.ToTable("AsbabNozoolBooks");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Aya", b =>
@@ -155,7 +158,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasIndex("SuraId");
 
-                    b.ToTable("Ayas", (string)null);
+                    b.ToTable("Ayas");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Egaz", b =>
@@ -177,7 +180,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasIndex("BabId");
 
-                    b.ToTable("Egazs", (string)null);
+                    b.ToTable("Egazs");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.EgazBab", b =>
@@ -210,7 +213,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasIndex("ParentId");
 
-                    b.ToTable("EgazBabs", (string)null);
+                    b.ToTable("EgazBabs");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.EgazBook", b =>
@@ -224,7 +227,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("EgazBooks", (string)null);
+                    b.ToTable("EgazBooks");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.EgazChapter", b =>
@@ -246,27 +249,10 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasIndex("EgazBookId");
 
-                    b.ToTable("EgazChapters", (string)null);
+                    b.ToTable("EgazChapters");
                 });
 
-            modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.ErabBook", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ErabBooks", (string)null);
-                });
-
-            modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.ErabNew", b =>
+            modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Erab", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -277,20 +263,49 @@ namespace MosshafContextHandeling.MainModels.Migrations
                     b.Property<int>("AyaId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ErabBookId")
-                        .HasColumnType("int");
+                    b.Property<string>("Daas")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Text")
-                        .IsRequired()
+                    b.Property<string>("Darwish")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Gadwal")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Kharat")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nahas")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tbian")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AyaId");
 
-                    b.HasIndex("ErabBookId");
+                    b.ToTable("Erabs");
+                });
 
-                    b.ToTable("Erabs", (string)null);
+            modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.ErabBook", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Book")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MappedColumnName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ErabBooks");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Keraat", b =>
@@ -304,7 +319,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Keraats", (string)null);
+                    b.ToTable("Keraats");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Maany", b =>
@@ -328,7 +343,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasIndex("MaanyBookId");
 
-                    b.ToTable("Maanies", (string)null);
+                    b.ToTable("Maanies");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.MaanyBook", b =>
@@ -346,7 +361,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasIndex("MaanyBookId");
 
-                    b.ToTable("MaanyBooks", (string)null);
+                    b.ToTable("MaanyBooks");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Mogam", b =>
@@ -376,7 +391,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasIndex("MogamBabId");
 
-                    b.ToTable("Mogams", (string)null);
+                    b.ToTable("Mogams");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.MogamBab", b =>
@@ -397,7 +412,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasIndex("MogamChapterId");
 
-                    b.ToTable("MogamBabs", (string)null);
+                    b.ToTable("MogamBabs");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.MogamBook", b =>
@@ -410,7 +425,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MogamBooks", (string)null);
+                    b.ToTable("MogamBooks");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.MogamChapter", b =>
@@ -431,7 +446,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasIndex("MogamBookId");
 
-                    b.ToTable("MogamChapters", (string)null);
+                    b.ToTable("MogamChapters");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Moshabeh", b =>
@@ -450,7 +465,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Moshabehs", (string)null);
+                    b.ToTable("Moshabehs");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.MultimediaCategory", b =>
@@ -464,7 +479,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MultimediaCategories", (string)null);
+                    b.ToTable("MultimediaCategories");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.MultimediaItem", b =>
@@ -502,7 +517,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasIndex("MultimediaLecturerId");
 
-                    b.ToTable("MultimediaItems", (string)null);
+                    b.ToTable("MultimediaItems");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.MultimediaLecturer", b =>
@@ -526,7 +541,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MultimediaLecturers", (string)null);
+                    b.ToTable("MultimediaLecturers");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Olom", b =>
@@ -559,7 +574,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasIndex("BabId");
 
-                    b.ToTable("Oloms", (string)null);
+                    b.ToTable("Oloms");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.OlomBab", b =>
@@ -588,7 +603,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasIndex("ParentId");
 
-                    b.ToTable("OlomBabs", (string)null);
+                    b.ToTable("OlomBabs");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.OlomBook", b =>
@@ -601,7 +616,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OlomBooks", (string)null);
+                    b.ToTable("OlomBooks");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.OlomChapter", b =>
@@ -623,7 +638,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasIndex("OlomBookId");
 
-                    b.ToTable("OlomChapters", (string)null);
+                    b.ToTable("OlomChapters");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Radio", b =>
@@ -647,7 +662,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Radios", (string)null);
+                    b.ToTable("Radios");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Reciter", b =>
@@ -674,7 +689,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasIndex("KeraatId");
 
-                    b.ToTable("Reciters", (string)null);
+                    b.ToTable("Reciters");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Sura", b =>
@@ -721,7 +736,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Suras", (string)null);
+                    b.ToTable("Suras");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.TafseerBook", b =>
@@ -742,7 +757,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TafseerBooks", (string)null);
+                    b.ToTable("TafseerBooks");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.TafseerNabawy", b =>
@@ -782,7 +797,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasIndex("SuraId");
 
-                    b.ToTable("TafseerNabawies", (string)null);
+                    b.ToTable("TafseerNabawies");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Tafser", b =>
@@ -809,7 +824,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasIndex("TafseerBookId");
 
-                    b.ToTable("Tafsers", (string)null);
+                    b.ToTable("Tafsers");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Tagwed", b =>
@@ -837,7 +852,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasIndex("AyaId");
 
-                    b.ToTable("Tagweds", (string)null);
+                    b.ToTable("Tagweds");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Tragem", b =>
@@ -864,7 +879,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasIndex("TragemBookId");
 
-                    b.ToTable("Tragems", (string)null);
+                    b.ToTable("Tragems");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.TragemBook", b =>
@@ -878,7 +893,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TragemBooks", (string)null);
+                    b.ToTable("TragemBooks");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Ahkam", b =>
@@ -965,7 +980,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
                     b.Navigation("EgazBook");
                 });
 
-            modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.ErabNew", b =>
+            modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Erab", b =>
                 {
                     b.HasOne("MosshafContextHandeling.MainModels.NewModels.Aya", "Aya")
                         .WithMany()
@@ -973,15 +988,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MosshafContextHandeling.MainModels.NewModels.ErabBook", "ErabBook")
-                        .WithMany()
-                        .HasForeignKey("ErabBookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Aya");
-
-                    b.Navigation("ErabBook");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Maany", b =>

@@ -25,4 +25,6 @@ public  class TafseerBook
     [Required]
     [OldName("details")]
     public string Details { get; set; }
+
+    public  ICollection<Tafser> Tafsers { get; set; } 
 }

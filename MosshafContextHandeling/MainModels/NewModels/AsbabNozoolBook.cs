@@ -19,5 +19,6 @@ public  class AsbabNozoolBook //reviewed for Asbab Al-Nozool  أسباب الن�
 
     [OldName("book")]
     [Required]
-    public string Book { get; set; }
+    public string Name { get; set; }
 }
+

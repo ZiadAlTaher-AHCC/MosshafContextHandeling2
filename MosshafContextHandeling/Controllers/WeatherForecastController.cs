@@ -55,22 +55,22 @@ namespace MosshafContextHandeling.Controllers
         //    .Where(x => x.Attr != null)
         //    .ToDictionary(x => x.Attr.OldName, x => x.PropName);
 
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        //private static readonly string[] Summaries = new[]
+        //{
+        //    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+        //};
 
 
 
-        static readonly Dictionary<string, string> TragemOldNameMap =
-            typeof(Tragem).GetProperties()
-            .Select(p => new
-            {
-                PropName = p.Name,
-                Attr = p.GetCustomAttribute<OldNameAttribute>()
-            })
-            .Where(x => x.Attr != null)
-            .ToDictionary(x => x.Attr.OldName, x => x.PropName);
+        //static readonly Dictionary<string, string> ErabOldNameMap =
+        //    typeof(Erab).GetProperties()
+        //    .Select(p => new
+        //    {
+        //        PropName = p.Name,
+        //        Attr = p.GetCustomAttribute<OldNameAttribute>()
+        //    })
+        //    .Where(x => x.Attr != null)
+        //    .ToDictionary(x => x.Attr.OldName, x => x.PropName);
 
         private readonly ILogger<WeatherForecastController> _logger;
 
@@ -85,59 +85,53 @@ namespace MosshafContextHandeling.Controllers
 
             var newContext = new Quran_quran4Context();
 
-            var TragemBooks = await newContext.AhkamBooks
-                .Include(a => a.Ahkams)
-                .ToListAsync();
 
-            foreach (var book in TragemBooks)
+            var ErabBooks = await newContext.ErabBooks
+            .AsNoTracking()
+            .ToListAsync();
+
+            foreach (var book in ErabBooks)
             {
-                //if (!TragemOldNameMap.TryGetValue(book.MappedColumnName, out var propertyName))
-                //{
-                //    _logger.LogWarning(
-                //        "MappedColumnName '{MappedColumnName}' not found in Tragem properties. BookId = {BookId}",
-                //        book.MappedColumnName,
-                //        book.Id
-                //    );
+                //// اسم البروبرتي الحقيقي في Erab
+                //var propertyName = ErabOldNameMap[book.MappedColumnName];
 
-                //    // عدّي اللفة دي
-                //    continue;
-                //}
-
-                //var parameter = Expression.Parameter(typeof(Tragem), "t");
+                //var parameter = Expression.Parameter(typeof(Erab), "t");
 
                 //var bindings = new List<MemberBinding>
                 //{
-                //    // TragemNew.AyaId = t.AyaId
+
+
+                //    // ErabNew.AyaId = t.AyaId
                 //    Expression.Bind(
-                //        typeof(Tragem).GetProperty(nameof(Tragem.AyaId))!,
-                //        Expression.Property(parameter, nameof(Tragem.AyaId))
+                //        typeof(ErabNew).GetProperty(nameof(ErabNew.AyaId))!,
+                //        Expression.Property(parameter, nameof(Erab.AyaId))
                 //    ),
 
-                //    // TragemNew.Text = t.<dynamic property>
+                //    // ErabNew.Text = t.<dynamic property>
                 //    Expression.Bind(
-                //        typeof(Tragem).GetProperty(nameof(Tragem.Text))!,
+                //        typeof(ErabNew).GetProperty(nameof(ErabNew.Text))!,
                 //        Expression.Property(parameter, propertyName)
                 //    )
                 //};
 
                 //var body = Expression.MemberInit(
-                //    Expression.New(typeof(Tragem)),
+                //    Expression.New(typeof(ErabNew)),
                 //    bindings
                 //);
 
-                //var selector = Expression.Lambda<Func<Tragem, Tragem>>(body, parameter);
+                //var selector = Expression.Lambda<Func<Erab, ErabNew>>(body, parameter);
 
-                //var result = await newContext.Tragems
+                //var result = await newContext.Erabs
                 //    .AsNoTracking()
                 //    .Select(selector)
                 //    .ToListAsync();
 
                 //// ربط الكتاب
                 //foreach (var item in result)
-                //    item.TragemBookId = book.Id;
+                //    item.ErabBookId = book.Id;
 
-                //newContext.TragemsNew.AddRange(result);
-                await newContext.SaveChangesAsync();
+                //newContext.ErabsNew.AddRange(result);
+                //await newContext.SaveChangesAsync();
             }
 
 
@@ -145,7 +139,6 @@ namespace MosshafContextHandeling.Controllers
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
                 TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
 .ToArray();
         }
