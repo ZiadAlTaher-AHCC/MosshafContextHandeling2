@@ -20,8 +20,4 @@ public  class AsbabNozoolBook //reviewed for Asbab Al-Nozool  أسباب الن�
     [OldName("book")]
     [Required]
     public string Book { get; set; }
-
-    [OldName("Field_q")]
-    [Required]
-    public string MappedColumnName { get; set; }
 }

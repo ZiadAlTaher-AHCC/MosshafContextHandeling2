@@ -18,9 +18,7 @@ public  class AhkamBook
     [OldName("book")]
     [Required]
     public string BookName { get; set; }
-
-    [OldName("Field_q")]
-    [Required]
-    public string MappedColumnName  { get; set; } 
+    
+    public ICollection<Ahkam> Ahkams { get; set; }
 
 }

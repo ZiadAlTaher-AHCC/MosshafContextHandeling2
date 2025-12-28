@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using MosshafContextHandeling.Helpers;
 using MosshafContextHandeling.MainModels.NewModels;
 using System.Data.Common;
-using System.Linq.Expressions;
 using System.Reflection;
 
 namespace MosshafContextHandeling.Controllers
@@ -86,48 +85,47 @@ namespace MosshafContextHandeling.Controllers
 
             var newContext = new Quran_quran4Context();
 
-            var TragemBooks = await newContext.TragemBooks
-     .AsNoTracking()
-     .Where(b => b.Id == 50 || b.Id == 62)
-     .ToListAsync();
+            var TragemBooks = await newContext.AhkamBooks
+                .Include(a => a.Ahkams)
+                .ToListAsync();
 
             foreach (var book in TragemBooks)
             {
-                if (!TragemOldNameMap.TryGetValue(book.MappedColumnName, out var propertyName))
-                {
-                    _logger.LogWarning(
-                        "MappedColumnName '{MappedColumnName}' not found in Tragem properties. BookId = {BookId}",
-                        book.MappedColumnName,
-                        book.Id
-                    );
+                //if (!TragemOldNameMap.TryGetValue(book.MappedColumnName, out var propertyName))
+                //{
+                //    _logger.LogWarning(
+                //        "MappedColumnName '{MappedColumnName}' not found in Tragem properties. BookId = {BookId}",
+                //        book.MappedColumnName,
+                //        book.Id
+                //    );
 
-                    // عدّي اللفة دي
-                    continue;
-                }
+                //    // عدّي اللفة دي
+                //    continue;
+                //}
 
-                var parameter = Expression.Parameter(typeof(Tragem), "t");
+                //var parameter = Expression.Parameter(typeof(Tragem), "t");
 
-                var bindings = new List<MemberBinding>
-                {
-                    // TragemNew.AyaId = t.AyaId
-                    Expression.Bind(
-                        typeof(TragemNew).GetProperty(nameof(TragemNew.AyaId))!,
-                        Expression.Property(parameter, nameof(Tragem.AyaId))
-                    ),
+                //var bindings = new List<MemberBinding>
+                //{
+                //    // TragemNew.AyaId = t.AyaId
+                //    Expression.Bind(
+                //        typeof(Tragem).GetProperty(nameof(Tragem.AyaId))!,
+                //        Expression.Property(parameter, nameof(Tragem.AyaId))
+                //    ),
 
-                    // TragemNew.Text = t.<dynamic property>
-                    Expression.Bind(
-                        typeof(TragemNew).GetProperty(nameof(TragemNew.Text))!,
-                        Expression.Property(parameter, propertyName)
-                    )
-                };
+                //    // TragemNew.Text = t.<dynamic property>
+                //    Expression.Bind(
+                //        typeof(Tragem).GetProperty(nameof(Tragem.Text))!,
+                //        Expression.Property(parameter, propertyName)
+                //    )
+                //};
 
-                var body = Expression.MemberInit(
-                    Expression.New(typeof(TragemNew)),
-                    bindings
-                );
+                //var body = Expression.MemberInit(
+                //    Expression.New(typeof(Tragem)),
+                //    bindings
+                //);
 
-                var selector = Expression.Lambda<Func<Tragem, TragemNew>>(body, parameter);
+                //var selector = Expression.Lambda<Func<Tragem, Tragem>>(body, parameter);
 
                 //var result = await newContext.Tragems
                 //    .AsNoTracking()

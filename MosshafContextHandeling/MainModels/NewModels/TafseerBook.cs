@@ -21,9 +21,6 @@ public  class TafseerBook
     [OldName("book")]
     public string Name { get; set; }
 
-    [Required]
-    [OldName("Field_q")]
-    public string MappedColumnName { get; set; }
 
     [Required]
     [OldName("details")]

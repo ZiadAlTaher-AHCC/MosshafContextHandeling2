@@ -21,10 +21,6 @@ public  class EgazBook //reviewed
     [Required]
     public string Name { get; set; }
 
-    [OldName("Field_q")]
-    [Required]
-    public string MappedColumnName { get; set; }//TODO: Rename to not used 
-
 
     // // Navigation
     // public ICollection<EgazChapter> Chapters { get; set; }

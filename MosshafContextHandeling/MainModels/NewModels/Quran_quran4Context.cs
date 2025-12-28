@@ -59,10 +59,9 @@ public partial class Quran_quran4Context : DbContext
     /// ////////new models
     /// </summary>
     public virtual DbSet<Tafser> Tafsers { get; set; }
-    public virtual DbSet<Ahhkam> Ahhkams { get; set; }
-    public virtual DbSet<AsbabNozoolNew> AsbabNozoolsNew { get; set; }
-    public virtual DbSet<TragemNew> TragemsNew { get; set; }
-    //public virtual DbSet<EgazNew> EgazsNew { get; set; }
+    public virtual DbSet<Ahkam> Ahkams { get; set; }
+    public virtual DbSet<AsbabNozool> AsbabNozools { get; set; }
+    public virtual DbSet<Tragem> Tragems { get; set; }
 
 
 

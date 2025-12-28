@@ -21,7 +21,4 @@ public  class TragemBook
     [OldName("book")]
     public string Name { get; set; }
 
-    [OldName("Field_q")]
-    public string MappedColumnName { get; set; }
-
 }

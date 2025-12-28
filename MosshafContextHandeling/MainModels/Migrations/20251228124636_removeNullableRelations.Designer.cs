@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MosshafContextHandeling.MainModels.NewModels;
 
@@ -11,9 +12,11 @@ using MosshafContextHandeling.MainModels.NewModels;
 namespace MosshafContextHandeling.MainModels.Migrations
 {
     [DbContext(typeof(Quran_quran4Context))]
-    partial class Quran_quran4ContextModelSnapshot : ModelSnapshot
+    [Migration("20251228124636_removeNullableRelations")]
+    partial class removeNullableRelations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,7 +49,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasIndex("AyaId");
 
-                    b.ToTable("Ahkams");
+                    b.ToTable("Ahhkams");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.AhkamBook", b =>
@@ -58,6 +61,10 @@ namespace MosshafContextHandeling.MainModels.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("BookName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MappedColumnName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -90,7 +97,7 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasIndex("AyaId");
 
-                    b.ToTable("AsbabNozools");
+                    b.ToTable("AsbabNozoolsNew");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.AsbabNozoolBook", b =>
@@ -102,6 +109,10 @@ namespace MosshafContextHandeling.MainModels.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Book")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MappedColumnName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -218,6 +229,10 @@ namespace MosshafContextHandeling.MainModels.Migrations
                     b.Property<int>("Id")
                         .HasColumnType("int");
 
+                    b.Property<string>("MappedColumnName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -295,6 +310,9 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.Property<string>("Book")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MappedColumnName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -605,6 +623,9 @@ namespace MosshafContextHandeling.MainModels.Migrations
                     b.Property<int?>("Id")
                         .HasColumnType("int");
 
+                    b.Property<string>("MappedColumnName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -745,6 +766,10 @@ namespace MosshafContextHandeling.MainModels.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("MappedColumnName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -873,13 +898,16 @@ namespace MosshafContextHandeling.MainModels.Migrations
 
                     b.HasIndex("TragemBookId");
 
-                    b.ToTable("Tragems");
+                    b.ToTable("TragemsNew");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.TragemBook", b =>
                 {
                     b.Property<int>("Id")
                         .HasColumnType("int");
+
+                    b.Property<string>("MappedColumnName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()

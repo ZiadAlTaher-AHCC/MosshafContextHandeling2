@@ -18,7 +18,4 @@ public  class ErabBook//reviewed
     [OldName("book")]
     [Required]
     public string Book { get; set; }
-
-    [OldName("Field_q")]
-    public string MappedColumnName { get; set; }
 }
