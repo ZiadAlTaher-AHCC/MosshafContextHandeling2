@@ -27,20 +27,20 @@ public partial class Quran_quran4Context : DbContext
     public virtual DbSet<MultimediaItem> MultimediaItems { get; set; }
     public virtual DbSet<MaanyBook> MaanyBooks { get; set; }
     public virtual DbSet<Maany> Maanies { get; set; }
-    public virtual DbSet<Ahkam> Ahkams { get; set; }
+    //public virtual DbSet<Ahkam> Ahkams { get; set; }
     public virtual DbSet<AhkamBook> AhkamBooks { get; set; }
-    public virtual DbSet<AsbabNozool> AsbabNozools { get; set; }
+    //public virtual DbSet<AsbabNozool> AsbabNozools { get; set; }
     public virtual DbSet<AsbabNozoolBook> AsbabNozoolBooks { get; set; }
     public virtual DbSet<Erab> Erabs { get; set; }
     public virtual DbSet<ErabBook> ErabBooks { get; set; }
     public virtual DbSet<Keraat> Keraats { get; set; }
     public virtual DbSet<Reciter> Reciters { get; set; }
     public virtual DbSet<Moshabeh> Moshabehs { get; set; }
-    public virtual DbSet<Tafseer> Tafseers { get; set; }
+    //public virtual DbSet<Tafseer> Tafseers { get; set; }
     public virtual DbSet<TafseerBook> TafseerBooks { get; set; }
     public virtual DbSet<TafseerNabawy> TafseerNabawies { get; set; }
     public virtual DbSet<Tagwed> Tagweds { get; set; }
-    public virtual DbSet<Tragem> Tragems { get; set; }
+    //public virtual DbSet<Tragem> Tragems { get; set; }
     public virtual DbSet<TragemBook> TragemBooks { get; set; }
     public virtual DbSet<OlomBook> OlomBooks { get; set; }
     public virtual DbSet<OlomChapter> OlomChapters { get; set; }
@@ -60,6 +60,9 @@ public partial class Quran_quran4Context : DbContext
     /// </summary>
     public virtual DbSet<Tafser> Tafsers { get; set; }
     public virtual DbSet<Ahhkam> Ahhkams { get; set; }
+    public virtual DbSet<AsbabNozoolNew> AsbabNozoolsNew { get; set; }
+    public virtual DbSet<TragemNew> TragemsNew { get; set; }
+    //public virtual DbSet<EgazNew> EgazsNew { get; set; }
 
 
 

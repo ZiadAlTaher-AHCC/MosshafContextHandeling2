@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MosshafContextHandeling.MainModels.NewModels;
 
@@ -11,9 +12,11 @@ using MosshafContextHandeling.MainModels.NewModels;
 namespace MosshafContextHandeling.MainModels.Migrations
 {
     [DbContext(typeof(Quran_quran4Context))]
-    partial class Quran_quran4ContextModelSnapshot : ModelSnapshot
+    [Migration("20251228123931_removeOldTablesAfterRestructure")]
+    partial class removeOldTablesAfterRestructure
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

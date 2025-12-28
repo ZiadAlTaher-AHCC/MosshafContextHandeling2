@@ -46,8 +46,25 @@ namespace MosshafContextHandeling.Controllers
         //    .ToDictionary(x => x.Attr.OldName, x => x.PropName);
 
 
-        static readonly Dictionary<string, string> AhkamOldNameMap =
-            typeof(Ahkam).GetProperties()
+        //static readonly Dictionary<string, string> AsbabNozoolOldNameMap =
+        //    typeof(AsbabNozool).GetProperties()
+        //    .Select(p => new
+        //    {
+        //        PropName = p.Name,
+        //        Attr = p.GetCustomAttribute<OldNameAttribute>()
+        //    })
+        //    .Where(x => x.Attr != null)
+        //    .ToDictionary(x => x.Attr.OldName, x => x.PropName);
+
+        private static readonly string[] Summaries = new[]
+        {
+            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+        };
+
+
+
+        static readonly Dictionary<string, string> TragemOldNameMap =
+            typeof(Tragem).GetProperties()
             .Select(p => new
             {
                 PropName = p.Name,
@@ -55,11 +72,6 @@ namespace MosshafContextHandeling.Controllers
             })
             .Where(x => x.Attr != null)
             .ToDictionary(x => x.Attr.OldName, x => x.PropName);
-
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
 
         private readonly ILogger<WeatherForecastController> _logger;
 
@@ -71,134 +83,62 @@ namespace MosshafContextHandeling.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public async Task<IEnumerable<WeatherForecast>> Get()
         {
-            //using (var oldContext = new Quran_quran3Context())
-            //using (var newContext = new Quran_quran4Context())
-            //{
-            //    var entityTypes = newContext.Model
-            //      .GetEntityTypes()
-            //      .Select(e => e.ClrType)
-            //      .Where(t => !t.IsAbstract)
-            //      .ToList();
-
-            //    foreach (var entityType in entityTypes)
-            //    {
-            //        try
-            //        {
-            //            var method = typeof(WeatherForecastController)
-            //                .GetMethod(nameof(MigrateTable))
-            //                .MakeGenericMethod(entityType);
-
-            //            await (Task)method.Invoke(this, new object[] { oldContext, newContext });
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            Console.WriteLine($"Error migrating {entityType.Name}");
-            //            Console.WriteLine(ex);
-            //        }
-            //    }
-            //}
 
             var newContext = new Quran_quran4Context();
-            //var Tafseers = await newContext.Tafseers.Select(b =>new {b.Id,text= "using reflection get the property that carry  [OldName(\"ta7reer1\")]").ToList()
-            //    .Include(b => b.MogamChapters)
-            //        .ThenInclude(c => c.MogamBabs)
-            //            .ThenInclude(b => b.Mogams)
-            //    .FirstOrDefaultAsync();
-            //var oldName = "ta7reer1";
 
-            //var prop = GetPropertyByOldName<Tafseer>(oldName);
-
-            //if (prop == null)
-            //    throw new Exception($"No property mapped with OldName = {oldName}");
-
-            //var tafseers = await newContext.Tafseers
-            //    .AsNoTracking()
-            //    .ToListAsync();
-
-            //var result = tafseers.Select(t => new
-            //{
-            //    t.Id,
-            //    Text = prop.GetValue(t)
-            //}).ToList();
-            //////////////////////////////////////////////////
-
-            //var oldName = "ta7reer1";
-
-            //var prop = GetPropertyByOldName<Tafseer>(oldName);
-
-            //if (prop == null)
-            //    throw new Exception($"No property mapped with OldName = {oldName}");
-
-            //var tafseers = await newContext.Tafseers
-            //    //.AsNoTracking()
-            //    .Where(t => t.AyaId == 1)
-            //    .ToListAsync();
-
-            //var result = tafseers.Select(t => new
-            //{
-            //    t.Id,
-            //    Text = prop.GetValue(t)
-            //}).ToList();
-
-            /////////////////////////////////////
-            ///
-
-            //// SELECT عمود واحد بس من DB
-            //var texts = await SelectDynamic<Tafseer, string>(
-            //        newContext.Tafseers.AsNoTracking(),
-            //        propertyName)
-            //    .Take(5)
-            //    .ToListAsync();
-
-            var ahkamBooks = await newContext.AhkamBooks
+            var TragemBooks = await newContext.TragemBooks
      .AsNoTracking()
+     .Where(b => b.Id == 50 || b.Id == 62)
      .ToListAsync();
 
-            foreach (var book in ahkamBooks)
+            foreach (var book in TragemBooks)
             {
-                // اسم البروبرتي الحقيقي في Ahkam
-                var propertyName = AhkamOldNameMap[book.MappedColumnName];
+                if (!TragemOldNameMap.TryGetValue(book.MappedColumnName, out var propertyName))
+                {
+                    _logger.LogWarning(
+                        "MappedColumnName '{MappedColumnName}' not found in Tragem properties. BookId = {BookId}",
+                        book.MappedColumnName,
+                        book.Id
+                    );
 
-                var parameter = Expression.Parameter(typeof(Ahkam), "t");
+                    // عدّي اللفة دي
+                    continue;
+                }
+
+                var parameter = Expression.Parameter(typeof(Tragem), "t");
 
                 var bindings = new List<MemberBinding>
-    {
-        //// Ahhkam.Id = t.Id
-        //Expression.Bind(
-        //    typeof(Ahhkam).GetProperty(nameof(Ahhkam.Id))!,
-        //    Expression.Property(parameter, nameof(Ahhkam.Id))
-        //),
+                {
+                    // TragemNew.AyaId = t.AyaId
+                    Expression.Bind(
+                        typeof(TragemNew).GetProperty(nameof(TragemNew.AyaId))!,
+                        Expression.Property(parameter, nameof(Tragem.AyaId))
+                    ),
 
-        // Ahhkam.AyaId = t.AyaId
-        Expression.Bind(
-            typeof(Ahhkam).GetProperty(nameof(Ahhkam.AyaId))!,
-            Expression.Property(parameter, nameof(Ahkam.AyaId))
-        ),
-
-        // Ahhkam.Text = t.<dynamic property>
-        Expression.Bind(
-            typeof(Ahhkam).GetProperty(nameof(Ahhkam.Text))!,
-            Expression.Property(parameter, propertyName)
-        )
-    };
+                    // TragemNew.Text = t.<dynamic property>
+                    Expression.Bind(
+                        typeof(TragemNew).GetProperty(nameof(TragemNew.Text))!,
+                        Expression.Property(parameter, propertyName)
+                    )
+                };
 
                 var body = Expression.MemberInit(
-                    Expression.New(typeof(Ahhkam)),
+                    Expression.New(typeof(TragemNew)),
                     bindings
                 );
 
-                var selector = Expression.Lambda<Func<Ahkam, Ahhkam>>(body, parameter);
+                var selector = Expression.Lambda<Func<Tragem, TragemNew>>(body, parameter);
 
-                var result = await newContext.Ahkams
-                    .AsNoTracking()
-                    .Select(selector)
-                    .ToListAsync();
+                //var result = await newContext.Tragems
+                //    .AsNoTracking()
+                //    .Select(selector)
+                //    .ToListAsync();
 
-                // ربط الكتاب
-                foreach (var item in result)
-                    item.AhkamBookId = book.Id;
+                //// ربط الكتاب
+                //foreach (var item in result)
+                //    item.TragemBookId = book.Id;
 
-                newContext.Ahhkams.AddRange(result);
+                //newContext.TragemsNew.AddRange(result);
                 await newContext.SaveChangesAsync();
             }
 
@@ -324,7 +264,86 @@ namespace MosshafContextHandeling.Controllers
         }
     }
 }
+//using (var oldContext = new Quran_quran3Context())
+//using (var newContext = new Quran_quran4Context())
+//{
+//    var entityTypes = newContext.Model
+//      .GetEntityTypes()
+//      .Select(e => e.ClrType)
+//      .Where(t => !t.IsAbstract)
+//      .ToList();
 
+//    foreach (var entityType in entityTypes)
+//    {
+//        try
+//        {
+//            var method = typeof(WeatherForecastController)
+//                .GetMethod(nameof(MigrateTable))
+//                .MakeGenericMethod(entityType);
+
+//            await (Task)method.Invoke(this, new object[] { oldContext, newContext });
+//        }
+//        catch (Exception ex)
+//        {
+//            Console.WriteLine($"Error migrating {entityType.Name}");
+//            Console.WriteLine(ex);
+//        }
+//    }
+//}
+
+
+
+
+//var Tafseers = await newContext.Tafseers.Select(b =>new {b.Id,text= "using reflection get the property that carry  [OldName(\"ta7reer1\")]").ToList()
+//    .Include(b => b.MogamChapters)
+//        .ThenInclude(c => c.MogamBabs)
+//            .ThenInclude(b => b.Mogams)
+//    .FirstOrDefaultAsync();
+//var oldName = "ta7reer1";
+
+//var prop = GetPropertyByOldName<Tafseer>(oldName);
+
+//if (prop == null)
+//    throw new Exception($"No property mapped with OldName = {oldName}");
+
+//var tafseers = await newContext.Tafseers
+//    .AsNoTracking()
+//    .ToListAsync();
+
+//var result = tafseers.Select(t => new
+//{
+//    t.Id,
+//    Text = prop.GetValue(t)
+//}).ToList();
+//////////////////////////////////////////////////
+
+//var oldName = "ta7reer1";
+
+//var prop = GetPropertyByOldName<Tafseer>(oldName);
+
+//if (prop == null)
+//    throw new Exception($"No property mapped with OldName = {oldName}");
+
+//var tafseers = await newContext.Tafseers
+//    //.AsNoTracking()
+//    .Where(t => t.AyaId == 1)
+//    .ToListAsync();
+
+//var result = tafseers.Select(t => new
+//{
+//    t.Id,
+//    Text = prop.GetValue(t)
+//}).ToList();
+
+/////////////////////////////////////
+///
+
+//// SELECT عمود واحد بس من DB
+//var texts = await SelectDynamic<Tafseer, string>(
+//        newContext.Tafseers.AsNoTracking(),
+//        propertyName)
+//    .Take(5)
+//    .ToListAsync();
 
 
 
@@ -438,5 +457,57 @@ namespace MosshafContextHandeling.Controllers
 //}
 
 
+
+//var AsbabNozoolBooks = await newContext.AsbabNozoolBooks
+//.AsNoTracking()
+//.ToListAsync();
+
+//foreach (var book in AsbabNozoolBooks)
+//{
+//    // اسم البروبرتي الحقيقي في AsbabNozool
+//    var propertyName = AsbabNozoolOldNameMap[book.MappedColumnName];
+
+//    var parameter = Expression.Parameter(typeof(AsbabNozool), "t");
+
+//    var bindings = new List<MemberBinding>
+//    {
+//        //// AsbabNozoolNew.Id = t.Id
+//        //Expression.Bind(
+//        //    typeof(AsbabNozoolNew).GetProperty(nameof(AsbabNozoolNew.Id))!,
+//        //    Expression.Property(parameter, nameof(AsbabNozoolNew.Id))
+//        //),
+
+//        // AsbabNozoolNew.AyaId = t.AyaId
+//        Expression.Bind(
+//            typeof(AsbabNozoolNew).GetProperty(nameof(AsbabNozoolNew.AyaId))!,
+//            Expression.Property(parameter, nameof(AsbabNozool.AyaId))
+//        ),
+
+//        // AsbabNozoolNew.Text = t.<dynamic property>
+//        Expression.Bind(
+//            typeof(AsbabNozoolNew).GetProperty(nameof(AsbabNozoolNew.Text))!,
+//            Expression.Property(parameter, propertyName)
+//        )
+//    };
+
+//    var body = Expression.MemberInit(
+//        Expression.New(typeof(AsbabNozoolNew)),
+//        bindings
+//    );
+
+//    var selector = Expression.Lambda<Func<AsbabNozool, AsbabNozoolNew>>(body, parameter);
+
+//    var result = await newContext.AsbabNozools
+//        .AsNoTracking()
+//        .Select(selector)
+//        .ToListAsync();
+
+//    // ربط الكتاب
+//    foreach (var item in result)
+//        item.AsbabNozoolBookId = book.Id;
+
+//    newContext.AsbabNozoolsNew.AddRange(result);
+//    await newContext.SaveChangesAsync();
+//}
 
 

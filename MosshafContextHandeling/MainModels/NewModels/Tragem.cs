@@ -17,7 +17,7 @@ public  class Tragem
     public int? Id { get; set; }
 
     [OldName("QuranID")]
-    public int? AyaId { get; set; } 
+    public int AyaId { get; set; } 
     public Aya Aya { get; set; }
 
     [OldName("GVerse")]

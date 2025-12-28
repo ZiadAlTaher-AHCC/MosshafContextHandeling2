@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MosshafContextHandeling.MainModels.NewModels;
 
@@ -11,9 +12,11 @@ using MosshafContextHandeling.MainModels.NewModels;
 namespace MosshafContextHandeling.MainModels.Migrations
 {
     [DbContext(typeof(Quran_quran4Context))]
-    partial class Quran_quran4ContextModelSnapshot : ModelSnapshot
+    [Migration("20251228093024_addNewAsbabNozoolTableWithNewStructure")]
+    partial class addNewAsbabNozoolTableWithNewStructure
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,6 +52,48 @@ namespace MosshafContextHandeling.MainModels.Migrations
                     b.ToTable("Ahhkams");
                 });
 
+            modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Ahkam", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Araby")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("AyaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Gahdamy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Gasas")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Kiaharsy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NaylMaram")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Rwaee")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AyaId");
+
+                    b.ToTable("Ahkams");
+                });
+
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.AhkamBook", b =>
                 {
                     b.Property<int>("Id")
@@ -68,6 +113,44 @@ namespace MosshafContextHandeling.MainModels.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AhkamBooks");
+                });
+
+            modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.AsbabNozool", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AyaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Eegab")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Esteaab")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Lebab")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Moharrer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Mosnad")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AyaId");
+
+                    b.ToTable("AsbabNozools");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.AsbabNozoolBook", b =>
@@ -751,6 +834,168 @@ namespace MosshafContextHandeling.MainModels.Migrations
                     b.ToTable("Suras");
                 });
 
+            modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Tafseer", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+
+                    b.Property<string>("Aazb")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Adwa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Arafa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("AyaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Aysar")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Baaawy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Baedawy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Baseet")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Bnothemen")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Dor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DorAlMason")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Dorar")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Elgalalen")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Elmoysar")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Elwaseet")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ErshadSaood")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EzzSalam")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FatthBian")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GameeBianEegy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Hatem")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ibnkathir")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Kadeer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("KashafZamakhshary")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Kortoby")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Mafateh")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MahasenQasmi")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Manar")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Many")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Mara7")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Maraghi")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Mawrdy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MoharrerWageez")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Mohet")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Mojahed")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Montkhab")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Moqatel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nasafy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Qatan")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RazzaqSanaany")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Saady1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Safwat")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShaarawyNew")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SofianAlThawry")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tabary")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tahreer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tasheel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WageezWahdy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ZadAlMaser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Zahra")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AyaId");
+
+                    b.ToTable("Tafseers");
+                });
+
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.TafseerBook", b =>
                 {
                     b.Property<int>("Id")
@@ -871,6 +1116,162 @@ namespace MosshafContextHandeling.MainModels.Migrations
                     b.ToTable("Tagweds");
                 });
 
+            modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Tragem", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+
+                    b.Property<string>("Alb")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("AyaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Braz")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Chinese")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EngAhmedAli")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EngAhmedRazaKhan")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EngArberry")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EngAsad")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EngClearQuranAllah")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EngClearQuranGod")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EngCommunityAllah")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EngCommunityGod")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EngDaryabadi")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EngHilaliAndKhan")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EngKhattab")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EngMaududi")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EngMubarakpuri")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EngPickthall")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EngQarai")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EngQaribullahAndDarwish")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EngSarwar")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EngYusufAli")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("English")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("English2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnglishShaker")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Fares")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Fin")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Fr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Fr2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("German2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Germany")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Gverse")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Hendi")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Indo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Italy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Japanese")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Kory")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Malawy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Polg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Polsh")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Posna")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Rusha")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sahly")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sere")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Torki")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ty")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AyaId");
+
+                    b.ToTable("Tragems");
+                });
+
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.TragemBook", b =>
                 {
                     b.Property<int>("Id")
@@ -888,33 +1289,6 @@ namespace MosshafContextHandeling.MainModels.Migrations
                     b.ToTable("TragemBooks");
                 });
 
-            modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.TragemNew", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AyaId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Text")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("TragemBookId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AyaId");
-
-                    b.HasIndex("TragemBookId");
-
-                    b.ToTable("TragemsNew");
-                });
-
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Ahhkam", b =>
                 {
                     b.HasOne("MosshafContextHandeling.MainModels.NewModels.AhkamBook", "AhkamBook")
@@ -926,6 +1300,26 @@ namespace MosshafContextHandeling.MainModels.Migrations
                         .HasForeignKey("AyaId");
 
                     b.Navigation("AhkamBook");
+
+                    b.Navigation("Aya");
+                });
+
+            modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Ahkam", b =>
+                {
+                    b.HasOne("MosshafContextHandeling.MainModels.NewModels.Aya", "Aya")
+                        .WithMany()
+                        .HasForeignKey("AyaId");
+
+                    b.Navigation("Aya");
+                });
+
+            modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.AsbabNozool", b =>
+                {
+                    b.HasOne("MosshafContextHandeling.MainModels.NewModels.Aya", "Aya")
+                        .WithMany()
+                        .HasForeignKey("AyaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Aya");
                 });
@@ -1114,6 +1508,15 @@ namespace MosshafContextHandeling.MainModels.Migrations
                     b.Navigation("Keraat");
                 });
 
+            modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Tafseer", b =>
+                {
+                    b.HasOne("MosshafContextHandeling.MainModels.NewModels.Aya", "Aya")
+                        .WithMany()
+                        .HasForeignKey("AyaId");
+
+                    b.Navigation("Aya");
+                });
+
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.TafseerNabawy", b =>
                 {
                     b.HasOne("MosshafContextHandeling.MainModels.NewModels.Sura", "Sura")
@@ -1151,21 +1554,13 @@ namespace MosshafContextHandeling.MainModels.Migrations
                     b.Navigation("Aya");
                 });
 
-            modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.TragemNew", b =>
+            modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.Tragem", b =>
                 {
                     b.HasOne("MosshafContextHandeling.MainModels.NewModels.Aya", "Aya")
                         .WithMany()
-                        .HasForeignKey("AyaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MosshafContextHandeling.MainModels.NewModels.TragemBook", "TragemBook")
-                        .WithMany()
-                        .HasForeignKey("TragemBookId");
+                        .HasForeignKey("AyaId");
 
                     b.Navigation("Aya");
-
-                    b.Navigation("TragemBook");
                 });
 
             modelBuilder.Entity("MosshafContextHandeling.MainModels.NewModels.MaanyBook", b =>
